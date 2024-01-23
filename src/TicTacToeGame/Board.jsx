@@ -19,6 +19,9 @@ const Board=()=>{
     const isWinner=checkWinner();
 
     const handleClick=(ind)=>{
+      if(state[ind]!==null){
+          return;
+      }
      const copystate=[...state];
      copystate[ind]= isXturn?"X":"O";
      setstate(copystate)
@@ -33,6 +36,7 @@ const Board=()=>{
             <button onClick={()=>setstate(Array(9).fill(null))}>Play Again</button></>):
             (
              <>
+                 <h4>Player {isXturn?"X":"O"}'s turn </h4>
               <div className="board-row">
             <Square onClick={()=>handleClick(0)} value={state[0]}/>
             <Square onClick={()=>handleClick(1)} value={state[1]}/>
